@@ -34,7 +34,6 @@ fun solution6(array: IntArray): Int {
     if (array.size < 2) {
         return -2
     }
-    val tempArray = IntArray(Int.MAX_VALUE)
     array.sort()
     var minDistance = 100_000_001
     for (i in array.indices) {

@@ -13,8 +13,12 @@ repositories {
 }
 
 dependencies {
+    implementation(platform("org.junit:junit-bom:5.5.2"))
     implementation(kotlin("stdlib-jdk8"))
-    testCompile("junit", "junit", "4.12")
+    testImplementation("org.assertj:assertj-core:3.13.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
+    testImplementation("org.junit.jupiter:junit-jupiter-params")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }
 
 configure<JavaPluginConvention> {
@@ -22,4 +26,9 @@ configure<JavaPluginConvention> {
 }
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+
+tasks.withType<Test> {
+    useJUnitPlatform()
 }
